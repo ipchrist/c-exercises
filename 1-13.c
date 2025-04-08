@@ -1,39 +1,32 @@
 #include <stdio.h>
 
-#define 	IN 	1
-#define 	OUT	0
-
 int main(){
-	int i;
-	int c;
-	int state;
-	int count;
-
+	int i, count, c, j, y;
+	int wlen[10];
 	count = 0;
-	state = OUT;
-	while((c = getchar()) != EOF){
+
+	for (i = 0; i <= 9; ++i){
+		wlen[i] = 0;
+	}
+
+	while ((c = getchar()) != EOF){
 		if (c == '\n' || c == ' ' || c == '\t'){
-			// if last word just finished and a new one has started
-			if(state == IN){
-				printf("\t");
-				for (i = 0; i < count; ++i)
-					printf("#");
+			if (count > 0){
+				++wlen[count];
 			}
-			count = 0;
-			state = OUT;
-			printf("\n");
-		}
+	
+		count = 0;
 
-		//this happens at the beginning of each word
-		else if (state == OUT){
-			state = IN;
-		}
-
-		// if is inside a word, print char and count + 1
-		if (state == IN){
-			putchar(c);
+		} else {
 			++count;
 		}
 	}
-}
 
+	for (i = 1; i <= 9; ++i){
+		printf("%02d | ", i);
+		for (y = 1; y <= wlen[i]; ++y){
+			printf("#");
+		}
+		printf("\n");
+	}
+}
