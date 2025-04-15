@@ -12,7 +12,7 @@ int main(){
 	bool in_string = false;
 	bool in_char = false;
 
-	for (i = prev = 0; (c = getchar()) != EOF; prev = c){
+	for (prev = 0; (c = getchar()) != EOF; prev = c){
 		if (c == '"' && prev != '\\' && !in_char && !in_line_comment && !in_block_comment){
 			in_string = !in_string;
 		}
