@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+
+/*
+Print out c programs without comments. 
+*/
 int main(){
 	int i, c, prev;
 	bool in_block_comment = false;
